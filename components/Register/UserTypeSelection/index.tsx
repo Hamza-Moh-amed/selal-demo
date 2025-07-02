@@ -79,10 +79,10 @@ export default function UserTypeSelection({
   return (
     <div className="w-full max-w-3xl mx-auto space-y-4">
       <div className="space-y-2 text-center">
-        <h2 className="text-2xl text-start md:text-center">
+        <h2 className="text-xl lg:text-2xl text-start md:text-center font-semibold">
           Choose Your Account Type
         </h2>
-        <p className="text-start md:text-center font-light text-sm md:text-base">
+        <p className="text-start md:text-center font-normal text-sm md:text-base">
           Select the option that best describes your role in the fish supply
           chain
         </p>
@@ -112,9 +112,9 @@ export default function UserTypeSelection({
 
                           <Label
                             htmlFor={type.value}
-                            className="flex flex-row lg:flex-col items-center justify-start gap-8 lg:gap-4 rounded-lg border-2 border-muted bg-popover p-6 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-[#155DFC] [&:has([data-state=checked])]:border-primary cursor-pointer transition-all"
+                            className="flex flex-row lg:flex-col items-center justify-start gap-8 lg:gap-4 rounded-2xl lg:rounded-xl border-2 border-muted bg-popover p-6 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-[#155DFC] [&:has([data-state=checked])]:border-primary cursor-pointer transition-all"
                           >
-                            <div className="p-4 rounded-2xl bg-gray-50">
+                            <div className="p-4 rounded-2xl bg-[#F3F4F6]">
                               <Icon className="h-6 w-6 text-[#155DFC]" />
                             </div>
                             <div className="w-2/3 flex flex-col gap-1 items-start md:items-center justify-center">

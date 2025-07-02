@@ -41,7 +41,8 @@ const schema = z.object({
     z.object({
       name: z.string().min(1, "Boat name is required"),
       registrationNumber: z.string().min(1, "Registration number is required"),
-      capacity: z.number().min(50).max(500),
+      // Capacity min and Max (Removed)
+      capacity: z.number(),
       boxSize: z.enum(["20kg", "25kg"]),
     })
   ),
@@ -98,21 +99,23 @@ export default function SubscriptionRequirements({
     const totalCapacity = boats.reduce((sum, boat) => sum + boat.capacity, 0);
     // Fixed: Same rate for all box sizes
     const monthlyBaseCost = totalCapacity * BASE_RATE;
-    const discount = PLAN_DISCOUNTS[plan];
-    const finalMonthlyCost = monthlyBaseCost * (1 - discount);
 
+    // Calculate individual plan costs with their respective discounts
     const planCosts = {
-      monthly: finalMonthlyCost,
-      quarterly: finalMonthlyCost * 3,
-      annual: finalMonthlyCost * 12,
+      monthly: monthlyBaseCost, // No discount for monthly
+      quarterly: monthlyBaseCost * (1 - PLAN_DISCOUNTS.quarterly) * 3,
+      annual: monthlyBaseCost * (1 - PLAN_DISCOUNTS.annual) * 12,
     };
+
+    const selectedDiscount = PLAN_DISCOUNTS[plan];
+    const finalMonthlyCost = monthlyBaseCost * (1 - selectedDiscount);
 
     return {
       totalCapacity,
       monthlyBaseCost,
       finalMonthlyCost,
       planCosts,
-      discount,
+      discount: selectedDiscount,
     };
   };
 
@@ -144,30 +147,29 @@ export default function SubscriptionRequirements({
   const pricing = calculatePricing(boats, subscriptionPlan);
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-6">
-      <div className="space-y-2 mb-4">
-        <h2 className="text-2xl font-bold text-start md:text-center">
+    <div className="w-full max-w-3xl mx-auto space-y-4">
+      <div className="space-y-2 text-center">
+        <h2 className="text-xl lg:text-2xl text-start md:text-center font-semibold">
           Subscription Requirements
         </h2>
-        <p className="text-sm text-muted-foreground text-start md:text-center">
+        <p className="text-start md:text-center font-normal text-sm md:text-base">
           Your subscription cost is calculated based on your total boat
           capacity. Larger commitments receive better discounts.
         </p>
       </div>
-
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           {/* Number of Boats */}
           <Card>
-            <CardContent>
+            <CardContent className="space-y-2">
+              <FormLabel className="text-base font-medium">
+                Fleet Configration
+              </FormLabel>
               <FormField
                 control={form.control}
                 name="numberOfBoats"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-base font-medium">
-                      Fleet Configration
-                    </FormLabel>
                     <FormLabel className="text-sm font-normal ">
                       Number of Boats
                     </FormLabel>
@@ -203,16 +205,16 @@ export default function SubscriptionRequirements({
           {/* Boat Details */}
           {boats.map((boat, index) => (
             <Card key={index}>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-2">
+                <FormLabel className="text-base font-medium">
+                  Boat {index + 1} Details
+                </FormLabel>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <FormField
                     control={form.control}
                     name={`boats.${index}.name`}
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-base font-medium">
-                          Boat {index + 1} Details
-                        </FormLabel>
                         <FormLabel className="text-sm font-normal">
                           Boat Name
                         </FormLabel>
@@ -335,7 +337,7 @@ export default function SubscriptionRequirements({
                         value={field.value}
                         className="space-y-4"
                       >
-                        <div className="flex items-center justify-between p-4 border rounded-lg">
+                        <div className="flex items-center justify-between p-4 border rounded-xl">
                           <div className="flex items-center space-x-2">
                             <RadioGroupItem value="monthly" id="monthly" />
                             <Label htmlFor="monthly" className="font-medium">
@@ -358,7 +360,7 @@ export default function SubscriptionRequirements({
                             <Label htmlFor="quarterly" className="font-medium">
                               Quarterly
                             </Label>
-                            <span className="text-sm text-green-700 font-light bg-green-100 px-1 rounded-sm py-1 rounded">
+                            <span className="text-sm text-green-700 font-light bg-green-100 px-1 rounded-xs py-1">
                               5% OFF
                             </span>
                           </div>
@@ -379,7 +381,7 @@ export default function SubscriptionRequirements({
                             <Label htmlFor="annual" className="font-medium">
                               Annual
                             </Label>
-                            <span className="text-sm text-green-700 font-light bg-green-100 px-1 rounded-sm py-1 rounded">
+                            <span className="text-sm text-green-700 font-light bg-green-100 px-1 rounded-sm py-1">
                               15% OFF
                             </span>
                           </div>

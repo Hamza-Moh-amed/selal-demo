@@ -218,17 +218,17 @@ export default function Payment({
                 {paymentSummary.totalCapacity} boxes
               </span>
             </div>
-            {/* {paymentSummary.discount && paymentSummary.discount > 0 && (
+            {paymentSummary.discount && paymentSummary.discount > 0 && (
               <div className="flex justify-between text-green-600">
                 <span>Discount:</span>
                 <span className="font-medium">
                   -{(paymentSummary.discount * 100).toFixed(0)}%
                 </span>
               </div>
-            )} */}
+            )}
           </div>
           <Separator />
-          <div className="flex justify-between text-lg font-bold">
+          <div className="flex justify-between text-base font-bold">
             <span>Total Amount:</span>
             <span>EGP {paymentSummary.totalAmount.toFixed(2)}</span>
           </div>
@@ -254,7 +254,13 @@ export default function Payment({
                         value={field.value}
                         className="space-y-4"
                       >
-                        <div className="flex items-center space-x-2 p-4 border rounded-lg">
+                        <div
+                          className={`flex items-center space-x-2 p-4 border rounded-lg ${
+                            field.value === "bank"
+                              ? "border-[#155DFC]"
+                              : "border-border"
+                          }`}
+                        >
                           <RadioGroupItem value="bank" id="bank" />
                           <Label
                             htmlFor="bank"
@@ -264,7 +270,13 @@ export default function Payment({
                             <span>Bank Transfer</span>
                           </Label>
                         </div>
-                        <div className="flex items-center space-x-2 p-4 border rounded-lg">
+                        <div
+                          className={`flex items-center space-x-2 p-4 border rounded-lg ${
+                            field.value === "cash"
+                              ? "border-[#155DFC]"
+                              : "border-border"
+                          }`}
+                        >
                           <RadioGroupItem value="cash" id="cash" />
                           <Label
                             htmlFor="cash"
@@ -274,7 +286,13 @@ export default function Payment({
                             <span>Cash Payment</span>
                           </Label>
                         </div>
-                        <div className="flex items-center space-x-2 p-4 border rounded-lg">
+                        <div
+                          className={`flex items-center space-x-2 p-4 border rounded-lg ${
+                            field.value === "instapay"
+                              ? "border-[#155DFC]"
+                              : "border-border"
+                          }`}
+                        >
                           <RadioGroupItem value="instapay" id="instapay" />
                           <Label
                             htmlFor="instapay"
@@ -348,9 +366,8 @@ export default function Payment({
                         <Popover open={open} onOpenChange={setOpen}>
                           <PopoverTrigger asChild>
                             <Button
-                              variant="outline"
                               id="paymentDate"
-                              className="w-48 justify-between font-normal"
+                              className="w-48 justify-between font-normal bg-primary-foreground text-primary hover:bg-primary-foreground"
                               type="button"
                               aria-label="Select payment date"
                             >
@@ -479,7 +496,6 @@ export default function Payment({
               onClick={onBack}
               className="flex items-center gap-1 w-1/2"
             >
-              <ChevronLeft className="h-4 w-4" />
               Back
             </Button>
             <Button
@@ -488,7 +504,6 @@ export default function Payment({
               className="flex items-center gap-1 w-1/2"
             >
               {loading ? "Processing..." : "Submit Payment"}
-              <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
         </form>

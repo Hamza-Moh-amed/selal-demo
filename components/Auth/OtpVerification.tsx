@@ -120,7 +120,7 @@ export default function OtpVerification({
                 variant="link"
                 onClick={handleResend}
                 disabled={timer > 0 || resendLoading}
-                className="text-sm text-[#155DFC]"
+                className="text-sm text-[#155DFC] "
               >
                 {resendLoading
                   ? "Resending..."

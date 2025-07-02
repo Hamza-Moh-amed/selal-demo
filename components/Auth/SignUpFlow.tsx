@@ -72,7 +72,10 @@ export default function SignupFlow() {
 
     return (
       <div className="flex justify-center w-full ">
-        <Progress value={progress} className="h-1 rounded-md w-3xl mx-auto" />
+        <Progress
+          value={progress}
+          className="h-1 rounded-md w-3xl mx-auto bg-[#D5E6EC]"
+        />
       </div>
     );
   };
@@ -218,12 +221,8 @@ export default function SignupFlow() {
   };
 
   return (
-    <div className="min-h-screen flex items-start lg:items-center w-full bg-gray-50 p-4 lg:p-8">
+    <div className="min-h-screen flex items-start lg:items-center w-full bg-[#FAFAFA] p-4 lg:p-8">
       <div className="w-full mx-auto">
-        <div className="flex flex-col items-center w-full mb-6">
-          {renderProgressBar()}
-        </div>
-
         {error && (
           <div className="text-red-500 text-sm text-center mb-2">{error}</div>
         )}
@@ -239,6 +238,10 @@ export default function SignupFlow() {
             loading={loading}
           />
         )}
+
+        <div className="flex flex-col items-center w-full mb-6">
+          {renderProgressBar()}
+        </div>
 
         {currentStep === 2 && (
           <PersonalInformation
