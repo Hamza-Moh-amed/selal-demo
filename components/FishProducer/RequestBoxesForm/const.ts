@@ -1,0 +1,58 @@
+import { Boat } from "../BoatManagment/types";
+
+export const timeSlots = [
+  "06:00 - 08:00",
+  "08:00 - 10:00",
+  "10:00 - 12:00",
+  "12:00 - 14:00",
+  "14:00 - 16:00",
+  "16:00 - 18:00",
+  "18:00 - 20:00",
+  "20:00 - 22:00",
+  "22:00 - 24:00",
+];
+
+export const mockBoats: Boat[] = [
+  {
+    id: "BOAT-001",
+    name: "Sea Explorer",
+    registrationNumber: "EG-2024-001",
+    capacity: 150,
+    boxSize: "20kg",
+    status: "active",
+    currentUtilization: 85,
+    timeSlots: timeSlots,
+    availableCapacity: 55,
+    captainName: "John Doe",
+    photo: "/placeholder.svg",
+    lastMaintenanceDate: "2024-01-01",
+  },
+  {
+    id: "BOAT-002",
+    name: "Ocean Breeze",
+    registrationNumber: "EG-2024-002",
+    capacity: 200,
+    boxSize: "25kg",
+    status: "active",
+    currentUtilization: 60,
+    timeSlots: timeSlots,
+    availableCapacity: 80,
+    captainName: "Jane Doe",
+    photo: "/placeholder.svg",
+    lastMaintenanceDate: "2024-01-01",
+  },
+  {
+    id: "BOAT-003",
+    name: "Blue Wave",
+    registrationNumber: "EG-2024-003",
+    capacity: 100,
+    boxSize: "20kg",
+    status: "active",
+    currentUtilization: 45,
+    timeSlots: timeSlots,
+    availableCapacity: 55,
+    captainName: "John Doe",
+    photo: "/placeholder.svg",
+    lastMaintenanceDate: "2024-01-01",
+  },
+];
