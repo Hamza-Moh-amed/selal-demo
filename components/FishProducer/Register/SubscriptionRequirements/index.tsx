@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -33,6 +33,12 @@ import {
 } from "@/components/ui/form";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 // import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const schema = z.object({
@@ -90,6 +96,8 @@ export default function SubscriptionRequirements({
   const boats = form.watch("boats") || [];
   const subscriptionPlan = form.watch("subscriptionPlan");
   const numberOfBoats = form.watch("numberOfBoats");
+
+  const [openBoatIndexes, setOpenBoatIndexes] = useState<string[]>(["0"]);
 
   // Calculate pricing
   const calculatePricing = (
@@ -153,8 +161,8 @@ export default function SubscriptionRequirements({
           Subscription Requirements
         </h2>
         <p className="text-start md:text-center font-normal text-sm md:text-base">
-          Your subscription cost is calculated based on your total boat
-          capacity. Larger commitments receive better discounts.
+          As a Fish Producer, you need an active subscription to use our
+          platform
         </p>
       </div>
       <Form {...form}>
@@ -202,120 +210,137 @@ export default function SubscriptionRequirements({
             </CardContent>
           </Card>
 
-          {/* Boat Details */}
-          {boats.map((boat, index) => (
-            <Card key={index}>
-              <CardContent className="space-y-2">
-                <FormLabel className="text-base font-medium">
-                  Boat {index + 1} Details
-                </FormLabel>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name={`boats.${index}.name`}
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-sm font-normal">
-                          Boat Name
-                        </FormLabel>
-                        <FormControl>
-                          <Input {...field} placeholder="Enter boat name" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+          {/* Boat Details Accordion */}
+          <Accordion
+            type="multiple"
+            value={openBoatIndexes}
+            onValueChange={setOpenBoatIndexes}
+            className="flex flex-col gap-4 mb-4"
+          >
+            {boats.map((boat, index) => (
+              <AccordionItem
+                key={index}
+                value={index.toString()}
+                className="border rounded-lg shadow"
+              >
+                <AccordionTrigger className="bg-white px-6 py-4  hover:no-underline">
+                  <div className="flex items-center justify-between w-full mr-4">
+                    <div className="text-left">
+                      <div className="font-semibold">
+                        Boat {index + 1} Details
+                      </div>
+                    </div>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6 bg-white  ">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name={`boats.${index}.name`}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-sm font-normal">
+                            Boat Name
+                          </FormLabel>
+                          <FormControl>
+                            <Input {...field} placeholder="Enter boat name" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                  <FormField
-                    control={form.control}
-                    name={`boats.${index}.registrationNumber`}
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-sm font-normal">
-                          Registration Number
-                        </FormLabel>
-                        <FormControl>
-                          <Input {...field} placeholder="e.g., EG-2024-001" />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                    <FormField
+                      control={form.control}
+                      name={`boats.${index}.registrationNumber`}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-sm font-normal">
+                            Registration Number
+                          </FormLabel>
+                          <FormControl>
+                            <Input {...field} placeholder="e.g., EG-2024-001" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                  <FormField
-                    control={form.control}
-                    name={`boats.${index}.capacity`}
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-sm font-normal">
-                          Boat Capacity (boxes)
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            type="number"
-                            min="50"
-                            max="500"
-                            {...field}
-                            onChange={(e) =>
-                              field.onChange(
-                                Number.parseInt(e.target.value) || 50
-                              )
-                            }
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                    <FormField
+                      control={form.control}
+                      name={`boats.${index}.capacity`}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-sm font-normal">
+                            Boat Capacity (boxes)
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              type="number"
+                              min="50"
+                              max="500"
+                              {...field}
+                              onChange={(e) =>
+                                field.onChange(
+                                  Number.parseInt(e.target.value) || 50
+                                )
+                              }
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                  <FormField
-                    control={form.control}
-                    name={`boats.${index}.boxSize`}
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-sm font-normal">
-                          Primary Box Size
-                        </FormLabel>
-                        <FormControl>
-                          <RadioGroup
-                            onValueChange={field.onChange}
-                            value={field.value}
-                            className="flex gap-4"
-                          >
-                            <div className="flex items-center space-x-2">
-                              <RadioGroupItem
-                                value="20kg"
-                                id={`20kg-${index}`}
-                              />
-                              <Label
-                                className="text-sm font-normal"
-                                htmlFor={`20kg-${index}`}
-                              >
-                                20kg
-                              </Label>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <RadioGroupItem
-                                value="25kg"
-                                id={`25kg-${index}`}
-                              />
-                              <Label
-                                className="text-sm font-normal"
-                                htmlFor={`25kg-${index}`}
-                              >
-                                25kg
-                              </Label>
-                            </div>
-                          </RadioGroup>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                    <FormField
+                      control={form.control}
+                      name={`boats.${index}.boxSize`}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-sm font-normal">
+                            Primary Box Size
+                          </FormLabel>
+                          <FormControl>
+                            <RadioGroup
+                              onValueChange={field.onChange}
+                              value={field.value}
+                              className="flex gap-4"
+                            >
+                              <div className="flex items-center space-x-2">
+                                <RadioGroupItem
+                                  value="20kg"
+                                  id={`20kg-${index}`}
+                                />
+                                <Label
+                                  className="text-sm font-normal"
+                                  htmlFor={`20kg-${index}`}
+                                >
+                                  20kg
+                                </Label>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <RadioGroupItem
+                                  value="25kg"
+                                  id={`25kg-${index}`}
+                                />
+                                <Label
+                                  className="text-sm font-normal"
+                                  htmlFor={`25kg-${index}`}
+                                >
+                                  25kg
+                                </Label>
+                              </div>
+                            </RadioGroup>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
 
           {/* Subscription Plans */}
           <Card>
