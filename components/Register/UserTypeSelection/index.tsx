@@ -82,7 +82,7 @@ export default function UserTypeSelection({
         <h2 className="text-xl lg:text-2xl text-start md:text-center font-semibold">
           Choose Your Account Type
         </h2>
-        <p className="text-start md:text-center font-normal text-sm md:text-base">
+        <p className="font-normal text-sm md:text-base">
           Select the option that best describes your role in the fish supply
           chain
         </p>
