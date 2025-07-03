@@ -5,15 +5,22 @@ import { ReactNode } from "react";
 import { dir } from "i18next";
 import initTranslations from "../../i18n/i18n";
 import TranslationsProvider from "@/i18n/TranslationProvider";
+import { Inter } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -34,9 +41,7 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={locale} dir={dir(locale)}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.variable} `}>
         <TranslationsProvider
           namespaces={i18nNamespaces}
           locale={locale}
