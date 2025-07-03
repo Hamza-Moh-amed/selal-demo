@@ -350,7 +350,7 @@ export default function SubscriptionRequirements({
               </CardTitle>
               <CardDescription>Choose your billing cycle</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="">
               <FormField
                 control={form.control}
                 name="subscriptionPlan"
