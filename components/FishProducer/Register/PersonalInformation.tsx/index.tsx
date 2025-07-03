@@ -176,7 +176,7 @@ export default function PersonalInformation({
             </CardContent>
           </Card>
 
-          <div className="flex items-center justify-center gap-4 w-full px-3">
+          <div className="signup-flow-actions fixed bottom-0 left-0 w-full p-4 bg-white z-10 sm:static sm:p-0 sm:bg-transparent flex items-center justify-center gap-4 px-3">
             <Button
               type="button"
               variant="outline"

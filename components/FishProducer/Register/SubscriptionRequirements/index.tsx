@@ -155,7 +155,7 @@ export default function SubscriptionRequirements({
   const pricing = calculatePricing(boats, subscriptionPlan);
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-4">
+    <div className="w-full max-w-3xl mx-auto space-y-4 pb-24 sm:pb-0">
       <div className="space-y-2 text-center">
         <h2 className="text-xl lg:text-2xl text-start md:text-center font-semibold">
           Subscription Requirements
@@ -453,7 +453,7 @@ export default function SubscriptionRequirements({
             </CardContent>
           </Card>
 
-          <div className="flex items-center justify-center gap-4 w-full px-3">
+          <div className="signup-flow-actions fixed bottom-0 left-0 p-4 bg-white z-10 sm:static sm:p-0 sm:bg-transparent flex items-center justify-center gap-4 w-full px-3">
             <Button
               type="button"
               variant="outline"

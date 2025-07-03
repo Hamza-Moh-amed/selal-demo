@@ -63,7 +63,7 @@ SuccessMessageProps) {
           </div> */}
         </CardContent>
       </Card>
-      <div className="flex justify-center mt-6 max-w-3xl mx-auto w-full px-3">
+      <div className="signup-flow-actions fixed bottom-0 left-0  p-4 bg-white z-10 sm:static sm:p-0 sm:bg-transparent flex justify-center mt-0 max-w-3xl mx-auto w-full px-3">
         <Button type="submit" className="w-full">
           <Link href="/dashboard">Go To Dashboard</Link>
         </Button>

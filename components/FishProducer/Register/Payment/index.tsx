@@ -185,7 +185,7 @@ export default function Payment({
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-6">
+    <div className="w-full max-w-3xl mx-auto space-y-6 pb-24 sm:pb-0">
       <Card>
         <CardHeader>
           <CardTitle className="text-center">Payment</CardTitle>
@@ -491,7 +491,7 @@ export default function Payment({
             </CardContent>
           </Card>
 
-          <div className="flex items-center justify-center gap-4 w-full">
+          <div className="signup-flow-actions fixed bottom-0 left-0  p-4 bg-white z-10 sm:static sm:p-0 sm:bg-transparent flex items-center justify-center gap-4 w-full">
             <Button
               type="button"
               variant="outline"

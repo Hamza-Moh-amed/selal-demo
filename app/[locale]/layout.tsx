@@ -6,6 +6,7 @@ import { dir } from "i18next";
 import initTranslations from "../../i18n/i18n";
 import TranslationsProvider from "@/i18n/TranslationProvider";
 import { Inter } from "next/font/google";
+import MobileNav from "@/components/Layout/MobileNav";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -42,13 +43,16 @@ export default async function RootLayout(props: {
   return (
     <html lang={locale} dir={dir(locale)}>
       <body className={`${inter.variable} `}>
-        <TranslationsProvider
-          namespaces={i18nNamespaces}
-          locale={locale}
-          resources={resources}
-        >
-          {children}
-        </TranslationsProvider>
+        <MobileNav />
+        <div className="pt-14 lg:pt-0">
+          <TranslationsProvider
+            namespaces={i18nNamespaces}
+            locale={locale}
+            resources={resources}
+          >
+            {children}
+          </TranslationsProvider>
+        </div>
       </body>
     </html>
   );
