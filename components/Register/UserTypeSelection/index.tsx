@@ -112,14 +112,14 @@ export default function UserTypeSelection({
 
                           <Label
                             htmlFor={type.value}
-                            className="flex flex-row lg:flex-col items-center justify-start gap-4 lg:gap-4 rounded-2xl lg:rounded-xl border-2 border-muted bg-popover p-6 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-[#155DFC] [&:has([data-state=checked])]:border-primary cursor-pointer transition-all"
+                            className="flex flex-row lg:flex-col items-center justify-start gap-4 lg:gap-4 rounded-2xl lg:rounded-xl border-2 border-muted bg-popover p-6  peer-data-[state=checked]:border-[#155DFC] [&:has([data-state=checked])]:border-primary cursor-pointer transition-all"
                           >
                             <div className="p-4 rounded-2xl bg-[#F3F4F6]">
                               <Icon className="h-6 w-6 text-[#155DFC]" />
                             </div>
                             <div className="w-2/3 flex flex-col gap-1 items-start md:items-center justify-center">
                               <div className="font-semibold">{type.label}</div>
-                              <p className="font-light text-sm md:text-base text-muted-foreground">
+                              <p className="font-light text-sm text-center text-muted-foreground">
                                 {type.description}
                               </p>
                             </div>
