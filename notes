@@ -1,3 +1,39 @@
 --> i18n Done
 --> Forms
 --> Components BreakDown
+
+all card headers should have text-16px weight-600 like:
+Personal Information
+Verify Your Phone
+Fleet Configuration
+Boat 1 Details
+Subscription Plan
+pricing summary
+payment method
+payment details
+etc...
+
+In the sign up flow I want to align all the text sizes and weight across the components
+Here are some examples: (first screen in sign-up flow: choose your account type)
+Choose Your Account Type weight-600 size 20px px text-[#030712]
+Select the option that best describes your role in
+the fish supply chain weight-400 text-[#6A7282] size 14px
+
+All Select options-
+Fish Producer weight-600 text-16px
+Boat owners and fish producers - weight-400 text-14px
+
+Go to personal info button text-14px weight-500
+
+Make the card titles like: Personal Information - Berify OTP
+weight-600 size-16px
+
+Make all labels and inputs weight-500 and not bold examples:
+Full Name
+Phone Number
+National Id Number
+Boat Name
+Registeration Number
+Boat Capacity
+
+I want you to align all the similar componetns in the flow with these examples and sizes and UI instructions and make the flow compatable and focus changes on text and font for all the compoentts

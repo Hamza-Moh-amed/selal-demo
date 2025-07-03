@@ -79,10 +79,10 @@ export default function UserTypeSelection({
   return (
     <div className="w-full max-w-3xl mx-auto min-h-[60vh] flex flex-col justify-between space-y-4">
       <div className="space-y-2 text-center">
-        <h2 className="text-xl lg:text-2xl text-start md:text-center font-semibold">
+        <h2 className="text-[20px] font-semibold text-[#030712] text-start md:text-center">
           Choose Your Account Type
         </h2>
-        <p className="text-start md:text-center font-normal text-sm md:text-base">
+        <p className="text-[14px] font-normal text-[#6A7282] text-start md:text-center">
           Select the option that best describes your role in the fish supply
           chain
         </p>
@@ -123,10 +123,10 @@ export default function UserTypeSelection({
                                   <Icon className="h-6 w-6 text-[#155DFC]" />
                                 </div>
                                 <div className="w-2/3 flex flex-col gap-1 items-start md:items-center justify-center">
-                                  <div className="font-semibold">
+                                  <div className="font-semibold text-[16px] text-[#030712]">
                                     {type.label}
                                   </div>
-                                  <p className="font-light text-sm md:text-center text-muted-foreground">
+                                  <p className="font-normal text-[14px] text-[#6A7282] md:text-center">
                                     {type.description}
                                   </p>
                                 </div>
@@ -145,7 +145,7 @@ export default function UserTypeSelection({
               <Button
                 type="submit"
                 disabled={loading}
-                className="flex items-center w-full "
+                className="flex items-center w-full text-[14px] font-medium"
               >
                 Go to Personal info
               </Button>

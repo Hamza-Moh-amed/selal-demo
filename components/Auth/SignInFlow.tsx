@@ -75,7 +75,7 @@ export default function SignInFlow() {
   };
 
   return (
-    <div className="min-h-screen flex items-center w-full bg-gray-50 p-4 lg:p-8">
+    <div className="min-h-screen flex items-start lg:items-center w-full bg-gray-50 p-4 lg:p-8">
       <div className="w-full mx-auto">
         {error && (
           <div

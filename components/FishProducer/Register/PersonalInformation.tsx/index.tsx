@@ -72,8 +72,10 @@ export default function PersonalInformation({
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <Card className="w-full max-w-3xl mx-auto mb-8">
             <CardHeader>
-              <CardTitle>Personal Information</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-[16px] font-semibold ">
+                Personal Information
+              </CardTitle>
+              <CardDescription className="text-[14px] font-normal ">
                 Please provide your personal details to create your account
               </CardDescription>
             </CardHeader>
@@ -83,7 +85,9 @@ export default function PersonalInformation({
                 name="fullName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Full Name</FormLabel>
+                    <FormLabel className="text-[14px] font-medium">
+                      Full Name
+                    </FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="Enter your full name" />
                     </FormControl>
@@ -97,7 +101,9 @@ export default function PersonalInformation({
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone Number</FormLabel>
+                    <FormLabel className="text-[14px] font-medium">
+                      Phone Number
+                    </FormLabel>
                     <FormControl>
                       <div className="flex">
                         <div className="flex items-center px-3 border border-r-0 rounded-l-md bg-muted">
@@ -105,7 +111,7 @@ export default function PersonalInformation({
                         </div>
                         <Input
                           {...field}
-                          placeholder="1004956670"
+                          placeholder="01004956670"
                           className="rounded-l-none"
                         />
                       </div>
@@ -120,7 +126,9 @@ export default function PersonalInformation({
                 name="nationalId"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>National ID Number</FormLabel>
+                    <FormLabel className="text-[14px] font-medium">
+                      National ID Number
+                    </FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -138,7 +146,9 @@ export default function PersonalInformation({
                 name="companyName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Company/Boat Owner Name</FormLabel>
+                    <FormLabel className="text-[14px] font-medium">
+                      Company/Boat Owner Name
+                    </FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -162,7 +172,7 @@ export default function PersonalInformation({
                           onCheckedChange={field.onChange}
                         />
                       </FormControl>
-                      <FormLabel className="text-sm gap-1">
+                      <FormLabel className="text-[14px] font-medium text-sm gap-1">
                         I agree to the
                         <span className="text-[#155DFC]">
                           Terms & Conditions
@@ -181,14 +191,14 @@ export default function PersonalInformation({
               type="button"
               variant="outline"
               onClick={onBack}
-              className="flex items-center gap-1 w-1/2 "
+              className="flex items-center gap-1 w-1/2 text-[14px] font-medium"
             >
               Back
             </Button>
             <Button
               type="submit"
               disabled={loading}
-              className="flex items-center gap-1 w-1/2 "
+              className="flex items-center gap-1 w-1/2 text-[14px] font-medium"
             >
               {loading ? "Sending OTP..." : "Verify Phone"}
             </Button>

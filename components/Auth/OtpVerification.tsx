@@ -84,8 +84,10 @@ export default function OtpVerification({
       >
         <Card className="w-full max-w-3xl mx-auto mb-8">
           <CardHeader className="text-center">
-            <CardTitle>Verify Your Phone</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-[16px] font-semibold ">
+              Verify Your Phone
+            </CardTitle>
+            <CardDescription className="text-[14px] font-normal text-[#6A7282]">
               We&apos;ve sent a 6-digit code to +20{phone?.slice(1)}
             </CardDescription>
           </CardHeader>
@@ -95,7 +97,7 @@ export default function OtpVerification({
               name="otp"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="justify-center mb-4">
+                  <FormLabel className="justify-center mb-4 text-[14px] font-medium">
                     Enter OTP Code
                   </FormLabel>
                   <FormControl>
@@ -120,7 +122,7 @@ export default function OtpVerification({
                 variant="link"
                 onClick={handleResend}
                 disabled={timer > 0 || resendLoading}
-                className="text-sm text-[#155DFC] "
+                className="text-[14px] font-medium text-[#155DFC]"
               >
                 {resendLoading
                   ? "Resending..."
@@ -137,14 +139,14 @@ export default function OtpVerification({
             type="button"
             variant="outline"
             onClick={onBack}
-            className="flex items-center gap-1 w-1/2"
+            className="flex items-center gap-1 w-1/2 text-[14px] font-medium"
           >
             Back
           </Button>
           <Button
             type="submit"
             disabled={loading}
-            className="flex items-center gap-1 w-1/2"
+            className="flex items-center gap-1 w-1/2 text-[14px] font-medium"
           >
             {loading ? "Verifying..." : "Verify & Continue"}
           </Button>

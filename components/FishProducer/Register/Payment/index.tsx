@@ -188,8 +188,10 @@ export default function Payment({
     <div className="w-full max-w-3xl mx-auto space-y-6 pb-24 sm:pb-0">
       <Card>
         <CardHeader>
-          <CardTitle className="text-center">Payment</CardTitle>
-          <CardDescription className="text-center">
+          <CardTitle className="text-[16px] font-semibold text-[#030712] text-center">
+            Payment
+          </CardTitle>
+          <CardDescription className="text-[14px] font-normal text-[#6A7282] text-center">
             Complete your subscription payment
           </CardDescription>
         </CardHeader>
@@ -197,41 +199,41 @@ export default function Payment({
 
       {/* Order Summary */}
       <Card>
-        <CardHeader>
-          <CardTitle>Order Summary</CardTitle>
-        </CardHeader>
         <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <div className="flex justify-between">
-              <span>Subscription Plan:</span>
-              <span className="font-medium capitalize">
+          <div className="flex flex-col gap-4 text-sm">
+            <Label className="text-[16px] font-semibold text-[#030712]">
+              Pricing Summary
+            </Label>
+            <div className="flex flex-row items-center justify-between">
+              <Label className="font-normal">Subscription Plan:</Label>
+              <Label className="capitalize">
                 {paymentSummary.subscriptionPlan}
-              </span>
+              </Label>
             </div>
-            <div className="flex justify-between">
-              <span>Total Boats:</span>
-              <span className="font-medium">{paymentSummary.totalBoats}</span>
+            <div className="flex flex-row items-center justify-between">
+              <Label className="font-normal">Total Boats:</Label>
+              <Label>{paymentSummary.totalBoats}</Label>
             </div>
-            <div className="flex justify-between">
-              <span>Total Capacity:</span>
-              <span className="font-medium">
-                {paymentSummary.totalCapacity} boxes
-              </span>
+            <div className="flex flex-row items-center justify-between">
+              <Label className="font-normal">Total Capacity:</Label>
+              <Label>{paymentSummary.totalCapacity} boxes</Label>
             </div>
             {typeof paymentSummary.discount === "number" &&
               paymentSummary.discount > 0 && (
-                <div className="flex justify-between text-green-600">
-                  <span>Discount:</span>
-                  <span className="font-medium">
+                <div className="flex flex-row items-center justify-between text-green-600">
+                  <Label className="font-normal">Discount:</Label>
+                  <Label className="font-medium">
                     -{(paymentSummary.discount * 100).toFixed(0)}%
-                  </span>
+                  </Label>
                 </div>
               )}
           </div>
           <Separator />
-          <div className="flex justify-between text-base font-bold">
-            <span>Total Amount:</span>
-            <span>EGP {paymentSummary.totalAmount.toFixed(2)}</span>
+          <div className="flex justify-between items-center text-lg font-bold">
+            <Label className="font-medium text-base">Total Amount:</Label>
+            <Label className="text-base">
+              EGP {paymentSummary.totalAmount.toFixed(2)}
+            </Label>
           </div>
         </CardContent>
       </Card>
@@ -241,7 +243,9 @@ export default function Payment({
           {/* Payment Method */}
           <Card>
             <CardHeader>
-              <CardTitle>Payment Method</CardTitle>
+              <CardTitle className="text-[16px] font-semibold text-[#030712]">
+                Payment Method
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <FormField
@@ -315,7 +319,9 @@ export default function Payment({
           {/* Payment Details */}
           <Card>
             <CardHeader>
-              <CardTitle>Payment Details</CardTitle>
+              <CardTitle className="text-[16px] font-semibold text-[#030712]">
+                Payment Details
+              </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               {paymentMethod === "bank" && (
@@ -339,13 +345,11 @@ export default function Payment({
                 name="paymentReference"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>
-                      {paymentMethod === "instapay"
-                        ? "InstaPay Reference Number"
-                        : "Payment Reference Number"}
+                    <FormLabel className="text-[14px] font-medium">
+                      Payment Reference Number
                     </FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="Enter reference number" />
+                      <Input {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -362,7 +366,9 @@ export default function Payment({
                     : undefined;
                   return (
                     <FormItem>
-                      <FormLabel>Payment Date</FormLabel>
+                      <FormLabel className="text-[14px] font-medium">
+                        Payment Date
+                      </FormLabel>
                       <FormControl>
                         <Popover open={open} onOpenChange={setOpen}>
                           <PopoverTrigger asChild>
@@ -496,16 +502,16 @@ export default function Payment({
               type="button"
               variant="outline"
               onClick={onBack}
-              className="flex items-center gap-1 w-1/2"
+              className="flex items-center gap-1 w-1/2 text-[14px] font-medium"
             >
               Back
             </Button>
             <Button
               type="submit"
               disabled={loading}
-              className="flex items-center gap-1 w-1/2"
+              className="flex items-center gap-1 w-1/2 text-[14px] font-medium"
             >
-              {loading ? "Processing..." : "Submit Payment"}
+              {loading ? "Processing..." : "Pay & Complete"}
             </Button>
           </div>
         </form>

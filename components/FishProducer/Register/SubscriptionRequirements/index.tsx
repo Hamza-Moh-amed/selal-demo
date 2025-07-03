@@ -157,10 +157,10 @@ export default function SubscriptionRequirements({
   return (
     <div className="w-full max-w-3xl mx-auto space-y-4 pb-24 sm:pb-0">
       <div className="space-y-2 text-center">
-        <h2 className="text-xl lg:text-2xl text-start md:text-center font-semibold">
+        <h2 className="text-[16px] font-semibold text-[#030712] text-start md:text-center">
           Subscription Requirements
         </h2>
-        <p className="text-start md:text-center font-normal text-sm md:text-base">
+        <p className="text-[14px] font-normal text-[#6A7282] text-start md:text-center">
           As a Fish Producer, you need an active subscription to use our
           platform
         </p>
@@ -170,7 +170,7 @@ export default function SubscriptionRequirements({
           {/* Number of Boats */}
           <Card>
             <CardContent className="space-y-2">
-              <FormLabel className="text-base font-medium">
+              <FormLabel className="text-[16px] font-medium">
                 Fleet Configration
               </FormLabel>
               <FormField
@@ -178,7 +178,7 @@ export default function SubscriptionRequirements({
                 name="numberOfBoats"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-normal ">
+                    <FormLabel className="text-[14px] font-medium">
                       Number of Boats
                     </FormLabel>
                     <Select
@@ -226,7 +226,7 @@ export default function SubscriptionRequirements({
                 <AccordionTrigger className="bg-white px-6 py-4  hover:no-underline">
                   <div className="flex items-center justify-between w-full mr-4">
                     <div className="text-left">
-                      <div className="font-semibold">
+                      <div className="text-[16px] font-semibold">
                         Boat {index + 1} Details
                       </div>
                     </div>
@@ -239,11 +239,11 @@ export default function SubscriptionRequirements({
                       name={`boats.${index}.name`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-normal">
+                          <FormLabel className="text-[14px] font-medium">
                             Boat Name
                           </FormLabel>
                           <FormControl>
-                            <Input {...field} placeholder="Enter boat name" />
+                            <Input {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -255,7 +255,7 @@ export default function SubscriptionRequirements({
                       name={`boats.${index}.registrationNumber`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-normal">
+                          <FormLabel className="text-[14px] font-medium">
                             Registration Number
                           </FormLabel>
                           <FormControl>
@@ -271,7 +271,7 @@ export default function SubscriptionRequirements({
                       name={`boats.${index}.capacity`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-normal">
+                          <FormLabel className="text-[14px] font-medium">
                             Boat Capacity (boxes)
                           </FormLabel>
                           <FormControl>
@@ -297,7 +297,7 @@ export default function SubscriptionRequirements({
                       name={`boats.${index}.boxSize`}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-sm font-normal">
+                          <FormLabel className="text-[14px] font-medium">
                             Primary Box Size
                           </FormLabel>
                           <FormControl>
@@ -345,7 +345,7 @@ export default function SubscriptionRequirements({
           {/* Subscription Plans */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-base font-medium">
+              <CardTitle className="text-[16px] font-semibold ">
                 Subscription Plan
               </CardTitle>
               <CardDescription>Choose your billing cycle</CardDescription>
@@ -432,7 +432,9 @@ export default function SubscriptionRequirements({
           <Card>
             <CardContent className="space-y-4">
               <div className="flex flex-col gap-4 text-sm">
-                <Label className="text-base font-medium">Pricing Summary</Label>
+                <Label className="text-[16px] font-semibold">
+                  Pricing Summary
+                </Label>
                 <div className="flex flex-row items-center justify-between">
                   <Label className="font-normal">Total Fleet Capacity:</Label>
                   <Label>{pricing.totalCapacity} boxes</Label>
@@ -458,12 +460,16 @@ export default function SubscriptionRequirements({
               type="button"
               variant="outline"
               onClick={onBack}
-              className="w-1/2"
+              className="flex items-center gap-1 w-1/2 text-[14px] font-medium"
             >
               Back
             </Button>
-            <Button type="submit" disabled={loading} className="w-1/2">
-              Submit & Subscripe
+            <Button
+              type="submit"
+              disabled={loading}
+              className="flex items-center gap-1 w-1/2 text-[14px] font-medium"
+            >
+              {loading ? "Processing..." : "Continue"}
             </Button>
           </div>
         </form>

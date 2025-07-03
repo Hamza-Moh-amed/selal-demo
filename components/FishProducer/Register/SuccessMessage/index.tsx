@@ -34,10 +34,10 @@ SuccessMessageProps) {
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 mb-4">
             <Check className="h-8 w-8 text-green-600" />
           </div>
-          <CardTitle className="text-2xl mb-2">
+          <CardTitle className="text-[20px] font-semibold text-[#030712] mb-2">
             Registration Successful!
           </CardTitle>
-          <CardDescription className="mb-6">
+          <CardDescription className="text-[14px] font-normal text-[#6A7282] mb-6">
             {isProducer
               ? "Your account has been created and is waiting for admin confirmation. You will receive a notification once your subscription is activated."
               : "Your account has been created successfully. You can now start using our platform."}
@@ -64,7 +64,7 @@ SuccessMessageProps) {
         </CardContent>
       </Card>
       <div className="signup-flow-actions fixed bottom-0 left-0  p-4 bg-white z-10 sm:static sm:p-0 sm:bg-transparent flex justify-center mt-0 max-w-3xl mx-auto w-full px-3">
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full text-[14px] font-medium">
           <Link href="/dashboard">Go To Dashboard</Link>
         </Button>
       </div>
