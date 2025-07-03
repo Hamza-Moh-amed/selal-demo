@@ -218,14 +218,15 @@ export default function Payment({
                 {paymentSummary.totalCapacity} boxes
               </span>
             </div>
-            {paymentSummary.discount && paymentSummary.discount > 0 && (
-              <div className="flex justify-between text-green-600">
-                <span>Discount:</span>
-                <span className="font-medium">
-                  -{(paymentSummary.discount * 100).toFixed(0)}%
-                </span>
-              </div>
-            )}
+            {typeof paymentSummary.discount === "number" &&
+              paymentSummary.discount > 0 && (
+                <div className="flex justify-between text-green-600">
+                  <span>Discount:</span>
+                  <span className="font-medium">
+                    -{(paymentSummary.discount * 100).toFixed(0)}%
+                  </span>
+                </div>
+              )}
           </div>
           <Separator />
           <div className="flex justify-between text-base font-bold">
@@ -367,8 +368,9 @@ export default function Payment({
                           <PopoverTrigger asChild>
                             <Button
                               id="paymentDate"
-                              className="w-48 justify-between font-normal bg-primary-foreground text-primary hover:bg-primary-foreground"
+                              className="w-48 justify-between font-normal "
                               type="button"
+                              variant="outline"
                               aria-label="Select payment date"
                             >
                               {valueAsDate && !isNaN(valueAsDate.getTime())
