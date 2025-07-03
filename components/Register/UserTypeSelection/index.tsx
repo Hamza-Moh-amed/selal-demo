@@ -77,7 +77,7 @@ export default function UserTypeSelection({
   });
 
   return (
-    <div className="w-full max-w-3xl mx-auto min-h-[60vh] flex flex-col justify-between space-y-4">
+    <div className="w-full max-w-3xl mx-auto min-h-[60vh] flex flex-col justify-between space-y-4 pb-24 sm:pb-0">
       <div className="space-y-2 text-center">
         <h2 className="text-[20px] font-semibold text-[#030712] text-start md:text-center">
           Choose Your Account Type
@@ -91,7 +91,8 @@ export default function UserTypeSelection({
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col flex-1"
+            className="flex flex-col h-full"
+            id="user-type-form"
           >
             <div className="flex-1">
               <FormField
@@ -141,17 +142,18 @@ export default function UserTypeSelection({
                 )}
               />
             </div>
-            <div className="mt-8">
-              <Button
-                type="submit"
-                disabled={loading}
-                className="flex items-center w-full text-[14px] font-medium"
-              >
-                Go to Personal info
-              </Button>
-            </div>
           </form>
         </Form>
+      </div>
+      <div className="signup-flow-actions fixed bottom-0 left-0 p-4 bg-white z-10 sm:static sm:p-0 sm:bg-transparent flex items-center justify-center gap-4 w-full px-3">
+        <Button
+          type="submit"
+          disabled={loading}
+          form="user-type-form"
+          className="flex items-center w-full text-[14px] font-medium"
+        >
+          Go to Personal info
+        </Button>
       </div>
     </div>
   );
